@@ -64,6 +64,8 @@ bool ClientService::Start()
 	const int32 sessionCount = GetMaxSessionCount();
 	for (int32 i = 0; i < sessionCount; i++)
 	{
+		this_thread::sleep_for(100ms);
+
 		SessionRef session = CreateSession();
 		if (session->Connect() == false)
 			return false;

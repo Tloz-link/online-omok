@@ -47,6 +47,9 @@ struct TableStruct_Protocol_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Protocol_2eproto;
 namespace Protocol {
+class C_Dummy;
+struct C_DummyDefaultTypeInternal;
+extern C_DummyDefaultTypeInternal _C_Dummy_default_instance_;
 class C_EnterRoom;
 struct C_EnterRoomDefaultTypeInternal;
 extern C_EnterRoomDefaultTypeInternal _C_EnterRoom_default_instance_;
@@ -79,6 +82,7 @@ struct S_ThrowSignUpErrorDefaultTypeInternal;
 extern S_ThrowSignUpErrorDefaultTypeInternal _S_ThrowSignUpError_default_instance_;
 }  // namespace Protocol
 PROTOBUF_NAMESPACE_OPEN
+template<> ::Protocol::C_Dummy* Arena::CreateMaybeMessage<::Protocol::C_Dummy>(Arena*);
 template<> ::Protocol::C_EnterRoom* Arena::CreateMaybeMessage<::Protocol::C_EnterRoom>(Arena*);
 template<> ::Protocol::C_PlayStone* Arena::CreateMaybeMessage<::Protocol::C_PlayStone>(Arena*);
 template<> ::Protocol::C_SignUp* Arena::CreateMaybeMessage<::Protocol::C_SignUp>(Arena*);
@@ -1644,6 +1648,154 @@ class S_ThrowResult final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_Protocol_2eproto;
 };
+// -------------------------------------------------------------------
+
+class C_Dummy final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_Dummy) */ {
+ public:
+  inline C_Dummy() : C_Dummy(nullptr) {}
+  ~C_Dummy() override;
+  explicit PROTOBUF_CONSTEXPR C_Dummy(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_Dummy(const C_Dummy& from);
+  C_Dummy(C_Dummy&& from) noexcept
+    : C_Dummy() {
+    *this = ::std::move(from);
+  }
+
+  inline C_Dummy& operator=(const C_Dummy& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_Dummy& operator=(C_Dummy&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_Dummy& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_Dummy* internal_default_instance() {
+    return reinterpret_cast<const C_Dummy*>(
+               &_C_Dummy_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(C_Dummy& a, C_Dummy& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_Dummy* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_Dummy* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_Dummy* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_Dummy>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_Dummy& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const C_Dummy& from) {
+    C_Dummy::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_Dummy* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Protocol.C_Dummy";
+  }
+  protected:
+  explicit C_Dummy(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Protocol.C_Dummy)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_Protocol_2eproto;
+};
 // ===================================================================
 
 
@@ -2286,9 +2438,35 @@ inline void S_ThrowResult::set_allocated_stoneinfo(::Protocol::StoneInfo* stonei
   // @@protoc_insertion_point(field_set_allocated:Protocol.S_ThrowResult.stoneInfo)
 }
 
+// -------------------------------------------------------------------
+
+// C_Dummy
+
+// bool success = 1;
+inline void C_Dummy::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool C_Dummy::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool C_Dummy::success() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_Dummy.success)
+  return _internal_success();
+}
+inline void C_Dummy::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void C_Dummy::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_Dummy.success)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

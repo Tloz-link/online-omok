@@ -4,10 +4,7 @@ class Player
 {
 public:
 	Player();
-	virtual ~Player()
-	{
-		cout << "Leave Player" << endl;
-	}
+	virtual ~Player();
 
 public:
 	Protocol::PlayerInfo playerInfo;

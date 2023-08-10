@@ -20,6 +20,8 @@ bool GameManager::SignUp(GameSessionRef session, string name)
 	player->session = session;
 	session->player = player;
 
+	cout << player->playerInfo.playerid() << " Player Login!" << endl;
+
 	session->Send(ServerPacketHandler::Make_S_Login(true, Protocol::LOG_IN_ERROR_NONE, player->playerInfo.playerid(), player->playerInfo.name()));
 	return true;
 }
@@ -37,6 +39,8 @@ void GameManager::MatchRoom(GameSessionRef session)
 	GameRoomRef room = make_shared<GameRoom>();
 	room->EnterRoom(session->player);
 	_gameRooms.insert(room);
+
+	cout << "Create " << _gameRooms.size() << " room!" << endl;
 }
 
 void GameManager::LeaveRoom(GameSessionRef session)

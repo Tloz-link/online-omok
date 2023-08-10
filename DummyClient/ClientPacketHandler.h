@@ -16,14 +16,24 @@ enum
 
 	S_CheckStone = 9,
 	S_ThrowResult = 10,
+
+	C_Dummy = 11,
 };
 
 class ClientPacketHandler
 {
 public:
-	static void HandlePacket(BYTE* buffer, int32 len);
+	static void HandlePacket(ServerSessionRef session, BYTE* buffer, int32 len);
+
+	// 받기
+	static void Handle_S_Login(ServerSessionRef session, BYTE* buffer, int32 len);
+	static void Handle_S_StartGame(ServerSessionRef session, BYTE* buffer, int32 len);
 
 	// 보내기
+	static SendBufferRef Make_C_SignUp(string name);
+	static SendBufferRef Make_C_EnterRoom(uint64 id);
+	static SendBufferRef Make_C_Dummy(bool success);
+
 	template<typename T>
 	static SendBufferRef MakeSendBuffer(T& pkt, uint16 pktId)
 	{

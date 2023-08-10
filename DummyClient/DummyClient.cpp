@@ -4,37 +4,7 @@
 #include "Service.h"
 #include "Session.h"
 #include "ClientPacketHandler.h"
-
-char sendData[] = "Hello World";
-
-class ServerSession : public PacketSession
-{
-public:
-	~ServerSession()
-	{
-		cout << "~ServerSession" << endl;
-	}
-
-	virtual void OnConnected() override
-	{
-		cout << "Connected To Server" << endl;
-	}
-
-	virtual void OnRecvPacket(BYTE* buffer, int32 len) override
-	{
-		ClientPacketHandler::HandlePacket(buffer, len);
-	}
-
-	virtual void OnSend(int32 len) override
-	{
-		//cout << "OnSend Len = " << len << endl;
-	}
-
-	virtual void OnDisconnected() override
-	{
-		//cout << "Disconnected" << endl;
-	}
-};
+#include "ServerSession.h"
 
 int main()
 {
@@ -46,7 +16,7 @@ int main()
 		NetAddress(L"127.0.0.1", 7777),
 		make_shared<IocpCore>(),
 		[]() { return make_shared<ServerSession>(); }, // TODO : SessionManager 등
-		5);
+		10);
 
 	service->Start();
 

@@ -14,8 +14,8 @@ void GameSession::OnConnected()
 
 void GameSession::OnDisconnected()
 {
-	GSessionManager.Remove(GetSessionRef());
-	GGameManager.LeaveRoom(GetSessionRef());
+	PacketRef packet = make_shared<Packet>(GetSessionRef(), nullptr, 0);
+	GPacketQueue.Push(packet);
 }
 
 void GameSession::OnRecvPacket(BYTE* buffer, int32 len)

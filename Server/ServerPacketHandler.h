@@ -16,6 +16,8 @@ enum PacketID
 
 	S_CheckStone = 9,
 	S_ThrowResult = 10,
+
+	C_Dummy = 11,
 };
 
 class ServerPacketHandler
@@ -27,6 +29,7 @@ public:
 	static void Handle_C_SignUp(GameSessionRef session, BYTE* buffer, int32 len);
 	static void Handle_C_EnterRoom(GameSessionRef session, BYTE* buffer, int32 len);
 	static void Handle_C_PlayStone(GameSessionRef session, BYTE* buffer, int32 len);
+	static void Handle_C_Dummy(GameSessionRef session, BYTE* buffer, int32 len);
 	
 	// º¸³»±â
 	static SendBufferRef Make_S_Login(bool success, Protocol::LOG_IN_ERROR error, uint64 accountId, string name);

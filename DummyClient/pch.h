@@ -2,6 +2,8 @@
 
 #include "CorePch.h"
 
+using ServerSessionRef = shared_ptr<class ServerSession>;
+
 #include "Protocol.pb.h"
 #include "Enum.pb.h"
 #include "Struct.pb.h"

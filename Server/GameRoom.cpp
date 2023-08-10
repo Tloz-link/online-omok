@@ -13,7 +13,7 @@ GameRoom::GameRoom() : _start(false)
 
 GameRoom::~GameRoom()
 {
-	cout << "~GameRoom" << endl;
+
 }
 
 void GameRoom::Init()

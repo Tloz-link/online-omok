@@ -11,6 +11,13 @@
 
 void ServerPacketHandler::HandlePacket(GameSessionRef session, BYTE* buffer, int32 len)
 {
+	if (len == 0)
+	{
+		GSessionManager.Remove(session);
+		GGameManager.LeaveRoom(session);
+		return;
+	}
+
 	BufferReader br(buffer, len);
 
 	PacketHeader header;
@@ -26,6 +33,9 @@ void ServerPacketHandler::HandlePacket(GameSessionRef session, BYTE* buffer, int
 		break;
 	case C_PlayStone:
 		Handle_C_PlayStone(session, buffer, len);
+		break;
+	case C_Dummy:
+		Handle_C_Dummy(session ,buffer, len);
 		break;
 	}
 }
@@ -66,6 +76,17 @@ void ServerPacketHandler::Handle_C_PlayStone(GameSessionRef session, BYTE* buffe
 	GameRoomRef room = player->gameRoom.lock();
 
 	room->PlayStone(player, pkt);
+}
+
+void ServerPacketHandler::Handle_C_Dummy(GameSessionRef session, BYTE* buffer, int32 len)
+{
+	PacketHeader* header = (PacketHeader*)buffer;
+	uint16 size = header->size;
+
+	Protocol::C_Dummy pkt;
+	pkt.ParseFromArray(&header[1], size - sizeof(PacketHeader));
+
+	session->Send(ServerPacketHandler::Make_S_StartGame("", Protocol::PLAYER_TYPE_BLACK));
 }
 
 SendBufferRef ServerPacketHandler::Make_S_Login(bool success, Protocol::LOG_IN_ERROR error, uint64 accountId, string name)
